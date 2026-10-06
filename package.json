@@ -1,0 +1,24 @@
+{
+  "name": "payz-fulfillment",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./adapter": "./src/lib/bitrefill-provider.ts",
+    "./private-delivery": "./src/lib/private-delivery.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "esbuild tests/private-delivery.test.ts --bundle --platform=node --format=cjs --outfile=/tmp/payz-private-delivery-tests.cjs && node --test /tmp/payz-private-delivery-tests.cjs"
+  },
+  "dependencies": {
+    "payz-core": "workspace:*",
+    "pdf-lib": "^1.17.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.3",
+    "esbuild": "0.28.2",
+    "typescript": "~5.9.3"
+  }
+}
